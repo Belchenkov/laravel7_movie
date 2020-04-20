@@ -18,7 +18,7 @@
                             <img src="https://img.icons8.com/color/48/000000/disney-movies-.png" />
                         </div>
 
-                        <div class="logo-text">Movie App</div>
+                        <div id="logo-text">Movie App</div>
                     </a>
                 </li>
                 <li class="md:ml-16 mt-3 md:mt-0">
