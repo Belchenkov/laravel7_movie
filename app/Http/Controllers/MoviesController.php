@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class MoviesController extends Controller
 {
+    const POPULAR_MOVIES_URL = 'https://api.themoviedb.org/3/movie/popular';
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +16,11 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $popularMovies = Http::withToken(config('services.tmdb.token'))
+                            ->get(MoviesController::POPULAR_MOVIES_URL)
+                            ->json()['results'];
+
+        return view('index', compact('popularMovies'));
     }
 
     /**
