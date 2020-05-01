@@ -21,8 +21,8 @@
                                 {{ $movie['title'] }}
                             </a>
                             <div class="flex items-center text-gray-400 text-sm mt-1">
-                                <svg 
-                                    class="fill-current text-orange-500 w-4" 
+                                <svg
+                                    class="fill-current text-orange-500 w-4"
                                     viewBox="0 0 24 24"
                                 >
                                     <g data-name="Layer 2">
@@ -36,7 +36,9 @@
                                 </span>
                             </div>
                             <div class="text-gray-400 text-sm">
-                                Action, Thriller, Comedy
+                                @foreach($movie['genre_ids'] as $genre)
+                                    {{ $genres->get($genre)  }} @if (!$loop->last), @endif
+                                @endforeach
                             </div>
                         </div>
                     </div>

@@ -7,20 +7,32 @@ use Illuminate\Support\Facades\Http;
 
 class MoviesController extends Controller
 {
-    const POPULAR_MOVIES_URL = 'https://api.themoviedb.org/3/movie/popular';
+    protected const POPULAR_MOVIES_URL = 'https://api.themoviedb.org/3/movie/popular';
+    protected const GENRE_MOVIES_URL = 'https://api.themoviedb.org/3/genre/movie/list';
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         $popularMovies = Http::withToken(config('services.tmdb.token'))
-                            ->get(MoviesController::POPULAR_MOVIES_URL)
+                            ->get(self::POPULAR_MOVIES_URL)
                             ->json()['results'];
 
-        return view('index', compact('popularMovies'));
+        $genresArray = Http::withToken(config('services.tmdb.token'))
+                            ->get(self::GENRE_MOVIES_URL)
+                            ->json()['genres'];
+
+        $genres = collect($genresArray)->mapWithKeys(static function ($genre) {
+            return [
+                $genre['id'] => $genre['name']
+            ];
+        });
+
+
+        return view('index', compact('popularMovies', 'genres'));
     }
 
     /**
