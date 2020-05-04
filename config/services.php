@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'tmdb' => [
+        'api_key' => env('MOVIE_DB_API_KEY'),
+        'token' => env('MOVIE_DB_BEARER_TOKEN')
+    ],
+
 ];
