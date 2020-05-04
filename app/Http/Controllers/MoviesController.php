@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 class MoviesController extends Controller
 {
     protected const POPULAR_MOVIES_URL = 'https://api.themoviedb.org/3/movie/popular';
+    protected const MOVIE_URL = 'https://api.themoviedb.org/3/movie/';
     protected const GENRE_MOVIES_URL = 'https://api.themoviedb.org/3/genre/movie/list';
     protected const NOW_PLAYING_MOVIES_URL = 'https://api.themoviedb.org/3/movie/now_playing';
 
@@ -68,11 +69,17 @@ class MoviesController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        return view('show');
+        $movie = Http::withToken(config('services.tmdb.token'))
+            ->get(self::MOVIE_URL . $id . '?append_to_response=credits,videos,images')
+            ->json();
+
+        return view('show', compact(
+            'movie'
+        ));
     }
 
     /**
