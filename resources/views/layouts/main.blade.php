@@ -13,7 +13,7 @@
         <div class="container px-4 mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-6">
             <ul class="flex items-center flex-col md:flex-row">
                 <li>
-                    <a href="#" class="flex items-center">
+                    <a href="{{ route('movies.index') }}" class="flex items-center">
                         <div>
                             <img src="https://img.icons8.com/color/48/000000/disney-movies-.png" />
                         </div>
@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <li class="md:ml-16 mt-3 md:mt-0">
-                    <a href="#" class="hover:text-gray-300">Movies</a>
+                    <a href="{{ route('movies.index') }}" class="hover:text-gray-300">Movies</a>
                 </li>
                 <li class="md:ml-6 mt-3 md:mt-0">
                     <a href="#" class="hover:text-gray-300">TV Shows</a>
