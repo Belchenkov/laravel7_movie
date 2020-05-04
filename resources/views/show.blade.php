@@ -85,38 +85,21 @@
 
     <div class="movie-images">
         <div class="container mx-auto px-4 py-16">
-            <h2 class="text-4xl font-semibold">Images</h2>
+            <h2 class="text-4xl font-semibold">Screenshots</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/image1.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/image2.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/image3.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/image4.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/image5.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/image6.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                </div>
+                @foreach($movie['images']['backdrops'] as $image)
+                    @if($loop->index < 9)
+                        <div class="mt-8">
+                            <a href="#">
+                                <img
+                                    src="{{ 'https://image.tmdb.org/t/p/w500/' . $image['file_path'] }}"
+                                    alt="{{ $image['file_path'] }}"
+                                    class="hover:opacity-75 transition ease-in-out duration-150"
+                                >
+                            </a>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </div> <!-- end movie-images -->
