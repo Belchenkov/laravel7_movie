@@ -62,64 +62,24 @@
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold">Cast</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/actor1.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                    <div class="mt-2">
-                        <a href="#" class="text-lg mt-2 hover:text-gray:300">Real Name</a>
-                        <div class="text-sm text-gray-400">
-                            John Smith
+                @foreach($movie['credits']['cast'] as $cast)
+                    @if($loop->index < 6)
+                        <div class="mt-8">
+                            <a href="#">
+                                <img
+                                    src="{{ 'https://image.tmdb.org/t/p/w300/' . $cast['profile_path'] }}"
+                                    alt="{{ $cast['name'] }}"
+                                    class="hover:opacity-75 transition ease-in-out duration-150"
+                                >
+                            </a>
+                            <div class="mt-2">
+                                <a href="#" class="text-lg mt-2 hover:text-gray:300">{{ $cast['name'] }}</a>
+                                <div class="text-sm text-gray-400">{{ $cast['character'] }}</div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/actor2.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                    <div class="mt-2">
-                        <a href="#" class="text-lg mt-2 hover:text-gray:300">Real Name</a>
-                        <div class="text-sm text-gray-400">
-                            John Smith
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/actor3.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                    <div class="mt-2">
-                        <a href="#" class="text-lg mt-2 hover:text-gray:300">Real Name</a>
-                        <div class="text-sm text-gray-400">
-                            John Smith
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/actor4.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                    <div class="mt-2">
-                        <a href="#" class="text-lg mt-2 hover:text-gray:300">Real Name</a>
-                        <div class="text-sm text-gray-400">
-                            John Smith
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/actor5.jpg" alt="parasite" class="hover:opacity-75 transition ease-in-out duration-150">
-                    </a>
-                    <div class="mt-2">
-                        <a href="#" class="text-lg mt-2 hover:text-gray:300">Real Name</a>
-                        <div class="text-sm text-gray-400">
-                            John Smith
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
+                    @endif
+                @endforeach
+           </div>
         </div>
     </div> <!-- end movie-cast -->
 
