@@ -3,3 +3,11 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.spinner {
+    position: absolute;
+}
+
+.top-16 {
+    top: 16px;
+}

@@ -21,7 +21,8 @@ class SearchDropdown extends Component
                 ->json()['results'];
         }
 
-
-        return view('livewire.search-dropdown', compact('searchResults'));
+        return view('livewire.search-dropdown', [
+            'searchResults' => collect($searchResults)->take(7)
+        ]);
     }
 }
