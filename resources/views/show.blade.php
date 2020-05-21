@@ -30,10 +30,12 @@
                     <div class="flex mt-4">
                         @foreach($movie['credits']['crew'] as $crew)
                             @if($loop->index < 2)
-                            <div class="mr-8">
-                                <div>{{ $crew['name'] }}</div>
-                                <div class="text-sm text-gray-400">{{ $crew['job'] }}</div>
-                            </div>
+                                <div class="mr-8">
+                                    <div>{{ $crew['name'] }}</div>
+                                    <div class="text-sm text-gray-400">{{ $crew['job'] }}</div>
+                                </div>
+                            @else
+                                @break
                             @endif
                         @endforeach
                     </div>
@@ -112,6 +114,8 @@
                                 <div class="text-sm text-gray-400">{{ $cast['character'] }}</div>
                             </div>
                         </div>
+                    @else
+                        @break
                     @endif
                 @endforeach
            </div>
