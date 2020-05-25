@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ViewModels\MoviesViewModel;
+use App\ViewModels\MovieViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -74,9 +75,9 @@ class MoviesController extends Controller
             ->get(self::MOVIE_URL . $id . '?append_to_response=credits,videos,images')
             ->json();
 
-        return view('show', compact(
-            'movie'
-        ));
+        $viewModel = new MovieViewModel($movie);
+
+        return view('show', $viewModel);
     }
 
     /**
