@@ -15,6 +15,10 @@
                             class="hover:opacity-75 transition ease-in-out duration-150"
                         >
                     </a>
+                    <div class="mt-2">
+                        <a href="#" class="text-lg hover:text-gray-300">Actor Name</a>
+                        <div class="text-sm truncate text-gray-400">Iron Man</div>
+                    </div>
                 </div>
             </div>
         </div> <!-- end popular-actors -->

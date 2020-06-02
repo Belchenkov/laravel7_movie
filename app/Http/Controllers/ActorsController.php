@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\ViewModels\ActorsViewModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ActorsController extends Controller
 {
+    protected const POPULAR_PERSON_URL = 'https://api.themoviedb.org/3/person/popular';
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,13 @@ class ActorsController extends Controller
      */
     public function index()
     {
-        return view('actors.index');
+        $popularActors = Http::withToken(config('services.tmdb.token'))
+            ->get(self::POPULAR_PERSON_URL)
+            ->json()['results'];
+
+        $viewModel = new ActorsViewModel($popularActors);
+
+        return view('actors.index', $viewModel);
     }
 
     /**
