@@ -24,4 +24,18 @@
                 @endforeach
             </div>
         </div> <!-- end popular-actors -->
+
+        <div class="flex justify-between mt-16">
+            @if ($previous)
+                <a href="/actors/page/{{$previous}}">Previous</a>
+            @else
+                <div></div>
+            @endif
+            @if ($next)
+                <a href="/actors/page/{{$next}}">Next</a>
+            @else
+                <div></div>
+            @endif
+        </div>
+    </div>
 @endsection

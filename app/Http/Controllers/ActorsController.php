@@ -13,15 +13,16 @@ class ActorsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param int $page
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index($page = 1)
     {
         $popularActors = Http::withToken(config('services.tmdb.token'))
-            ->get(self::POPULAR_PERSON_URL)
+            ->get(self::POPULAR_PERSON_URL . '?page=' . $page)
             ->json()['results'];
 
-        $viewModel = new ActorsViewModel($popularActors);
+        $viewModel = new ActorsViewModel($popularActors, $page);
 
         return view('actors.index', $viewModel);
     }
