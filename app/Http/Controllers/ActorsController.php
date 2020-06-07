@@ -18,6 +18,8 @@ class ActorsController extends Controller
      */
     public function index($page = 1)
     {
+        abort_if($page > 500, 204);
+
         $popularActors = Http::withToken(config('services.tmdb.token'))
             ->get(self::POPULAR_PERSON_URL . '?page=' . $page)
             ->json()['results'];
