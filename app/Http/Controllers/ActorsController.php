@@ -58,7 +58,7 @@ class ActorsController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('actors.show');
     }
 
     /**
