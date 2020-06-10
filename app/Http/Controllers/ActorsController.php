@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\ViewModels\ActorsViewModel;
+use App\ViewModels\ActorViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class ActorsController extends Controller
 {
     protected const POPULAR_PERSON_URL = 'https://api.themoviedb.org/3/person/popular';
+    protected const ACTORS_URL = 'https://api.themoviedb.org/3/person/';
 
     /**
      * Display a listing of the resource.
@@ -58,7 +60,21 @@ class ActorsController extends Controller
      */
     public function show($id)
     {
-        return view('actors.show');
+        $actor = Http::withToken(config('services.tmdb.token'))
+            ->get(self::ACTORS_URL . $id)
+            ->json();
+
+        $social = Http::withToken(config('services.tmdb.token'))
+            ->get(self::ACTORS_URL . $id . '/external_ids')
+            ->json();
+
+        $credits = Http::withToken(config('services.tmdb.token'))
+            ->get(self::ACTORS_URL . $id . '/combined_credits')
+            ->json();
+
+        $viewModel = new ActorViewModel($actor, $social, $credits);
+
+        return view('actors.show', $viewModel);
     }
 
     /**
