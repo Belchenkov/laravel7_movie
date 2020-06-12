@@ -71,19 +71,21 @@
                 <h4 class="font-semibold mt-12">Known For</h4>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-                    <div class="mt-4">
-                        <a href="#">
-                            <img
-                                src=""
-                                alt="poster"
-                                class="hover:opacity-75 transition ease-in-out duration-150"
-                            >
-                        </a>
-                        <a
-                            href="#"
-                            class="text-sm leading-normal block text-gray-400 hover:text-white mt-1"
-                        >Avengers</a>
-                    </div>
+                    @foreach($knownForMovies as $movie)
+                        <div class="mt-4">
+                            <a href="{{ route('movies.show', $movie['id']) }}">
+                                <img
+                                    src="{{ $movie['poster_path'] }}"
+                                    alt="poster"
+                                    class="hover:opacity-75 transition ease-in-out duration-150"
+                                >
+                            </a>
+                            <a
+                                href="{{ route('movies.show', $movie['id']) }}"
+                                class="text-sm leading-normal block text-gray-400 hover:text-white mt-1"
+                            >{{ $movie['title'] }}</a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -93,13 +95,13 @@
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold">Credits</h2>
             <ul class="list-disc leading-loose pl-5 mt-8">
-                {{--@foreach ($credits as $credit)
+                @foreach ($credits as $credit)
                     <li>
                         {{ $credit['release_year'] }} &middot;
-                        <strong><a href="{{ $credit['linkToPage'] }}" class="hover:underline">{{ $credit['title'] }}</a></strong>
+                        <strong>{{ $credit['title'] }}</strong>
                         as {{ $credit['character'] }}
                     </li>
-                @endforeach--}}
+                @endforeach
             </ul>
         </div>
     </div> <!-- end credits-->
