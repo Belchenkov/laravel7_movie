@@ -18,12 +18,11 @@
         <div class="now-playing-movies py-24">
             <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold">Top Rated Shows</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-                {{--@foreach ($nowPlayingMovies as $movie)
-                    <x-movie-card
-                        :movie="$movie"
-                        :genres="$genres"
-                    ></x-movie-card>
-                @endforeach--}}
+                @foreach ($topRatedTv as $tvshow)
+                    <x-tv-card
+                        :tvshow="$tvshow"
+                    ></x-tv-card>
+                @endforeach
             </div>
         </div> <!-- end now-playing-movies -->
     </div>
