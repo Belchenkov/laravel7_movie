@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ViewModels\MoviesViewModel;
+use App\ViewModels\TvViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
