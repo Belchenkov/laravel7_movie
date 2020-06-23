@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ViewModels\TvShowViewModel;
 use App\ViewModels\TvViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -10,6 +11,7 @@ class TvController extends Controller
 {
     protected const POPULAR_TV_URL = 'https://api.themoviedb.org/3/tv/popular';
     protected const TOP_RATED_TV = 'https://api.themoviedb.org/3/tv/top_rated';
+    protected const TV = 'https://api.themoviedb.org/3/tv/';
     protected const GENRE_TV_URL = 'https://api.themoviedb.org/3/genre/tv/list';
 
     /**
@@ -69,7 +71,13 @@ class TvController extends Controller
      */
     public function show($id)
     {
-        //
+        $tvshow = Http::withToken(config('services.tmdb.token'))
+            ->get(self::TV . $id . '?append_to_response=credits,videos,images')
+            ->json();
+
+        $viewModel = new TvShowViewModel($tvshow);
+
+        return view('tv.show', $viewModel);
     }
 
     /**
