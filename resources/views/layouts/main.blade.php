@@ -12,11 +12,11 @@
         <body class="font-sans bg-gray-900 text-white">
             <nav class="border-b border-gray-800">
                 <div class="container px-4 mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-6">
-                    <ul class="flex items-center flex-col md:flex-row">
+                    <ul class="flex items-center navbar-menu flex-col md:flex-row">
                         <li>
                             <a href="{{ route('movies.index') }}" class="flex items-center">
-                                <div>
-                                    <img src="https://img.icons8.com/color/48/000000/disney-movies-.png" />
+                                <div class="mr-3">
+                                    <img src="https://img.icons8.com/cute-clipart/44/000000/movie.png"/>
                                 </div>
 
                                 <div id="logo-text">Movie App</div>
