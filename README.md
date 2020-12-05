@@ -1,9 +1,11 @@
-## Movie App
+# Movie App
 
 > Create App "Movie App" use Laravel 7 & TMDb API.
 > Implements popular movies, new releases and specific movie details for individual movies. 
 
 ### [Demo](http://193.187.174.213:8010)
+
+![screenshot](https://github.com/Belchenkov/laravel7_movie/blob/deploy/uploads/scrin.png)
 
 ### Get started:
 ```sh
