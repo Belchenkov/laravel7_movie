@@ -5,6 +5,8 @@
 
 ### [Demo](http://193.187.174.213:8010)
 
+![screenshot](https://github.com/Belchenkov/laravel7_movie/blob/deploy/uploads/scrin.png)
+
 ### Get started:
 ```sh
 git clone
